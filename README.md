@@ -1,9 +1,9 @@
-# Student Grocery Deal Finder
+# Grocery Deal Finder
 
-An AI-assisted prototype that helps students or in Germany compare supermarket offers and find the best nearby store based on price and distance.
+An AI-assisted prototype that helps students or budget-conscious people Germany compare supermarket offers and find the best nearby store based on price and distance.
 
 ## Problem
-Students often need to check multiple supermarket flyers and apps to find the best discounts. This takes time and makes it harder to save money.
+Buyers often need to check multiple supermarket flyers and apps to find the best discounts. This takes time and makes it harder to save money.
 
 ## Project Goal
 Build a simple app that:
