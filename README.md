@@ -23,6 +23,8 @@ Build a simple app that:
 ## Planned Tech Stack
 - Python
 - pandas
+- numpy
+- pytorch/tensorflow
 - Streamlit
 - rapidfuzz
 - geopy
