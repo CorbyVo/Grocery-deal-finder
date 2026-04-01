@@ -1,1 +1,7 @@
-
+offer_id,store_id,raw_name,normalized_name,price,discount,valid_from,valid_to
+1,1,Whole Milk 1L,milk,1.19,0.20,2026-04-01,2026-04-07
+2,2,Fresh Milk 1L,milk,0.99,0.10,2026-04-01,2026-04-07
+3,1,Eggs 10 pack,eggs,2.29,0.30,2026-04-01,2026-04-07
+4,2,Eggs 10 pack,eggs,2.09,0.25,2026-04-01,2026-04-07
+5,1,Spaghetti 500g,pasta,0.89,0.10,2026-04-01,2026-04-07
+6,2,Pasta 500g,pasta,0.79,0.12,2026-04-01,2026-04-07
