@@ -1,1 +1,5 @@
-
+product_id,normalized_name,category,unit
+1,milk,dairy,1L
+2,eggs,dairy,10pcs
+3,pasta,dry_food,500g
+4,apples,fruit,1kg
