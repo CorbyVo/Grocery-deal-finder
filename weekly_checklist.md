@@ -13,17 +13,17 @@ Use this file to track your work every week.
 **Goal:** create a clean project base.
 
 ### Tasks
-- [ ] Create GitHub repository
-- [ ] Choose final project name
-- [ ] Create repo folder structure
-- [ ] Add README.md with problem and goal
-- [ ] Add requirements.txt
+- [x] Create GitHub repository
+- [x] Choose final project name
+- [x] Create repo folder structure
+- [x] Add README.md with problem and goal
+- [x] Add requirements.txt
 - [ ] Add .gitignore
-- [ ] Add roadmap file
+- [x] Add roadmap file
 
 ### Deliverables
-- [ ] Public GitHub repo created
-- [ ] Basic project structure visible
+- [x] Public GitHub repo created
+- [x] Basic project structure visible
 
 ### Notes
 - Problems faced:
