@@ -18,7 +18,7 @@ Use this file to track your work every week.
 - [x] Create repo folder structure
 - [x] Add README.md with problem and goal
 - [x] Add requirements.txt
-- [ ] Add .gitignore
+- [x] Add .gitignore
 - [x] Add roadmap file
 
 ### Deliverables
@@ -46,7 +46,7 @@ Use this file to track your work every week.
 
 ### Deliverables
 - [x] Three CSV files created
-- [ ] Sample data can be loaded successfully
+- [x] Sample data can be loaded successfully
 
 ### Notes
 - Problems faced:
@@ -59,14 +59,14 @@ Use this file to track your work every week.
 **Goal:** load and inspect data in Python.
 
 ### Tasks
-- [ ] Write load_data.py
-- [ ] Load all CSV files using pandas
-- [ ] Print and inspect tables
+- [x] Write load_data.py
+- [x] Load all CSV files using pandas
+- [x] Print and inspect tables
 - [ ] Check for missing values or formatting issues
 - [ ] Standardize product names to lowercase / consistent format
 
 ### Deliverables
-- [ ] Data loads without error
+- [x] Data loads without error
 - [ ] Data cleaned enough for first logic tests
 
 ### Notes
