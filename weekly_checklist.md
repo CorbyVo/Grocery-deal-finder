@@ -39,13 +39,13 @@ Use this file to track your work every week.
 - [ ] Choose 1 city
 - [ ] Choose 2 supermarkets
 - [ ] Define 20-30 grocery products
-- [ ] Create stores.csv
-- [ ] Create products.csv
-- [ ] Create offers.csv
-- [ ] Add first manual sample offers
+- [x] Create stores.csv
+- [x] Create products.csv
+- [x] Create offers.csv
+- [x] Add first manual sample offers
 
 ### Deliverables
-- [ ] Three CSV files created
+- [x] Three CSV files created
 - [ ] Sample data can be loaded successfully
 
 ### Notes
