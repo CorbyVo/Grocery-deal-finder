@@ -36,8 +36,8 @@ Use this file to track your work every week.
 **Goal:** define how project data will be stored.
 
 ### Tasks
-- [ ] Choose 1 city
-- [ ] Choose 2 supermarkets
+- [x] Choose 1 city
+- [x] Choose 2 supermarkets
 - [ ] Define 20-30 grocery products
 - [x] Create stores.csv
 - [x] Create products.csv
@@ -80,15 +80,15 @@ Use this file to track your work every week.
 **Goal:** compare shopping basket totals across stores.
 
 ### Tasks
-- [ ] Write compare.py
-- [ ] Accept a small shopping list as input
-- [ ] Match shopping list items to normalized product names
-- [ ] Sum basket price by store
-- [ ] Show cheapest store result
+- [x] Write compare.py
+- [x] Accept a small shopping list as input
+- [x] Match shopping list items to normalized product names
+- [x] Sum basket price by store
+- [x] Show cheapest store result
 
 ### Deliverables
-- [ ] Script outputs basket total per store
-- [ ] Cheapest store identified correctly
+- [x] Script outputs basket total per store
+- [x] Cheapest store identified correctly
 
 ### Notes
 - Problems faced:
@@ -267,9 +267,9 @@ Use this file to track your work every week.
 ---
 
 ## Final MVP checklist
-- [ ] GitHub repo created and organized
-- [ ] Sample grocery data prepared
-- [ ] Basket comparison logic works
+- [x] GitHub repo created and organized
+- [x] Sample grocery data prepared
+- [x] Basket comparison logic works
 - [ ] Product matching works for simple inputs
 - [ ] Distance calculation works
 - [ ] Recommendation engine works
