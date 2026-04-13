@@ -30,7 +30,7 @@ Build a simple app that:
 - geopy
 
 ## Project Status
-Planning and repository setup.
+finished core logic about computing basket price and comparing baket price.
 
 ## Roadmap
 See `roadmap.md`
