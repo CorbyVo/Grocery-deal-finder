@@ -9,8 +9,8 @@ Use this file to track your work every week.
 
 ---
 
-## Week 1 - Project setup
-**Goal:** create a clean project base.
+## Week 1 - Project setup and Data design
+**Goal:** create a clean project base and define how project data will be stored
 
 ### Tasks
 - [x] Create GitHub repository
@@ -24,16 +24,6 @@ Use this file to track your work every week.
 ### Deliverables
 - [x] Public GitHub repo created
 - [x] Basic project structure visible
-
-### Notes
-- Problems faced:
-- Decisions made:
-- Next focus:
-
----
-
-## Week 2 - Data design
-**Goal:** define how project data will be stored.
 
 ### Tasks
 - [x] Choose 1 city
@@ -55,7 +45,7 @@ Use this file to track your work every week.
 
 ---
 
-## Week 3 - Data loading and inspection
+## Week 2 - Data loading and inspection
 **Goal:** load and inspect data in Python.
 
 ### Tasks
@@ -76,7 +66,7 @@ Use this file to track your work every week.
 
 ---
 
-## Week 4 - Basket comparison logic
+## Week 3 - Basket comparison logic
 **Goal:** compare shopping basket totals across stores.
 
 ### Tasks
@@ -97,7 +87,7 @@ Use this file to track your work every week.
 
 ---
 
-## Week 5 - Product matching
+## Week 4 - Product matching
 **Goal:** handle messy user input better.
 
 ### Tasks
@@ -118,7 +108,7 @@ Use this file to track your work every week.
 
 ---
 
-## Week 6 - Location and distance logic
+## Week 5 - Location and distance logic
 **Goal:** recommend stores using distance, not only price.
 
 ### Tasks
@@ -139,7 +129,7 @@ Use this file to track your work every week.
 
 ---
 
-## Week 7 - Recommendation engine
+## Week 6 - Recommendation engine
 **Goal:** combine price and distance into a useful recommendation.
 
 ### Tasks
@@ -160,7 +150,7 @@ Use this file to track your work every week.
 
 ---
 
-## Week 8 - Streamlit interface
+## Week 7 - Streamlit interface
 **Goal:** build a simple demo interface.
 
 ### Tasks
@@ -182,7 +172,7 @@ Use this file to track your work every week.
 
 ---
 
-## Week 9 - Testing and debugging
+## Week 8 - Testing and debugging
 **Goal:** make the project more reliable.
 
 ### Tasks
@@ -203,7 +193,7 @@ Use this file to track your work every week.
 
 ---
 
-## Week 10 - Documentation polish
+## Week 9 - Documentation polish
 **Goal:** make the repo clear for recruiters.
 
 ### Tasks
@@ -224,7 +214,7 @@ Use this file to track your work every week.
 
 ---
 
-## Week 11 - Portfolio improvement
+## Week 10 - Portfolio improvement
 **Goal:** make the project look stronger on GitHub and CV.
 
 ### Tasks
@@ -245,7 +235,7 @@ Use this file to track your work every week.
 
 ---
 
-## Week 12 - Final review and next-step planning
+## Week 11 - Final review and next-step planning
 **Goal:** finish MVP and define next version.
 
 ### Tasks
