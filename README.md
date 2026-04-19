@@ -18,7 +18,7 @@ Build a simple app that:
 - 20–30 products
 - simple shopping list comparison
 - location-based recommendation
-- basic AI/NLP product matching
+- basic AI/NLP product matching - semantic product matching using a Sentence Transformer (SBERT-style) model
 
 ## Planned Tech Stack
 - Python
@@ -26,7 +26,7 @@ Build a simple app that:
 - numpy
 - pytorch/tensorflow
 - Streamlit
-- rapidfuzz
+- Sentence Transformer
 - geopy
 
 ## Project Status
