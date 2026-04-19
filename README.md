@@ -18,7 +18,7 @@ Build a simple app that:
 - 20–30 products
 - simple shopping list comparison
 - location-based recommendation
-- basic AI/NLP product matching - semantic product matching using a Sentence Transformer (SBERT-style) model
+- basic AI/NLP product matching - semantic product matching using a pretrained Sentence Transformer (SBERT-style) model
 
 ## Planned Tech Stack
 - Python
@@ -26,11 +26,11 @@ Build a simple app that:
 - numpy
 - pytorch/tensorflow
 - Streamlit
-- Sentence Transformer
+- sentence-transformer
 - geopy
 
 ## Project Status
-finished core logic about computing basket price and comparing baket price.
+Implemented the logic for basket price calculation and the store price comparison and cheapest store recommendation
 
 ## Roadmap
 See `roadmap.md`
