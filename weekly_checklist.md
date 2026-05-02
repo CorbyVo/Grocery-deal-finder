@@ -57,7 +57,7 @@ Use this file to track your work every week.
 
 ### Deliverables
 - [x] Data loads without error
-- [ ] Data cleaned enough for first logic tests
+- [x] Data cleaned enough for first logic tests
 
 ### Notes
 - Problems faced:
@@ -91,15 +91,14 @@ Use this file to track your work every week.
 **Goal:** handle messy user input better.
 
 ### Tasks
-- [ ] Add rapidfuzz dependency
-- [ ] Write matcher.py
-- [ ] Match terms like "vollmilch" and "milk 1l" to "milk"
+- [x] Write matcher.py
+- [x] Match terms like "vollmilch" and "milk 1l" to "milk"
 - [ ] Test matching with at least 10 sample user inputs
 - [ ] Create a small synonym list for common items
 
 ### Deliverables
-- [ ] Product matching works for basic variations
-- [ ] Matching logic documented
+- [x] Product matching works for basic variations
+- [x] Matching logic documented
 
 ### Notes
 - Problems faced:
@@ -112,15 +111,15 @@ Use this file to track your work every week.
 **Goal:** recommend stores using distance, not only price.
 
 ### Tasks
-- [ ] Add user location input format
-- [ ] Store latitude and longitude in stores.csv
-- [ ] Use geopy or simple coordinates for distance calculation
-- [ ] Compute store distance from user
-- [ ] Show nearest store result
+- [x] Add user location input format
+- [x] Store latitude and longitude in stores.csv
+- [x] Use geopy or simple coordinates for distance calculation
+- [x] Compute store distance from user
+- [x] Show nearest store result
 
 ### Deliverables
-- [ ] Distance is calculated for all stores
-- [ ] App can identify nearest store
+- [x] Distance is calculated for all stores
+- [x] App can identify nearest store
 
 ### Notes
 - Problems faced:
@@ -133,20 +132,20 @@ Use this file to track your work every week.
 **Goal:** combine price and distance into a useful recommendation.
 
 ### Tasks
-- [ ] Write recommend.py
-- [ ] Return cheapest store
-- [ ] Return nearest store
+- [x] Write recommend.py
+- [x] Return cheapest store
+- [x] Return nearest store
 - [ ] Return best overall store
 - [ ] Add simple explanation rules
 
 ### Deliverables
-- [ ] Recommendation output is understandable
+- [x] Recommendation output is understandable
 - [ ] One test case with clear explanation created
 
 ### Notes
-- Problems faced:
-- Decisions made:
-- Next focus:
+- Problems faced: not able to give the recommendation if the cheapest store and nearest store are different
+- Decisions made: just export the the cheapest store and nearest store information. Give the user freedom to make decision
+- Next focus: use more rules and logic to give the user the best recommendation
 
 ---
 
@@ -154,16 +153,16 @@ Use this file to track your work every week.
 **Goal:** build a simple demo interface.
 
 ### Tasks
-- [ ] Create streamlit_app.py
-- [ ] Add shopping list text input
-- [ ] Add location input
-- [ ] Display matched items
-- [ ] Display price comparison table
-- [ ] Display recommendation summary
+- [x] Create streamlit_app.py
+- [x] Add shopping list text input
+- [x] Add location input
+- [x] Display matched items
+- [x] Display price comparison table
+- [x] Display recommendation summary
 
 ### Deliverables
-- [ ] Streamlit app runs locally
-- [ ] End-to-end demo works with sample data
+- [x] Streamlit app runs locally
+- [x] End-to-end demo works with sample data
 
 ### Notes
 - Problems faced:
