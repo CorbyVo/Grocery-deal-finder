@@ -42,7 +42,7 @@ To keep the project realistic and finishable, the first version will include:
 - Build a simple Streamlit interface
 
 ### Phase 3 - AI enhancement
-- Add fuzzy matching for product names
+- Semantic product matching using a pretrained Sentence Transformer (SBERT-style) model
 - Normalize user input to known products
 - Add natural-language recommendation explanation
 
@@ -65,7 +65,7 @@ To keep the project realistic and finishable, the first version will include:
 ### Core logic
 - Python
 - pandas
-- rapidfuzz
+- sentence-transformer
 - geopy
 
 ### Storage
