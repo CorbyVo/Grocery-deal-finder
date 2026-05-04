@@ -1,14 +1,14 @@
-from matcher import ProductMatcher
-from recommend import recommend_cheapest_store
+from src.matcher import ProductMatcher
+from src.recommend import recommend_store
 
 
-def run_pipeline(user_shopping_list, threshold = 0.50):
+def run_pipeline(user_shopping_list, user_latitude, user_longitude, threshold = 0.50):
     """
     Full pipeline:
     1. Match raw user input to normalize product names
     2. Recommend to best store
     """
-
+    original_request_count =len(user_shopping_list)
     matcher = ProductMatcher()
     matched_details = []     # match the user list with normalized list -> list of normalized products with their info
     clean_matched_products = []    # remove None, bad match, duplicates from matched_products
@@ -22,7 +22,7 @@ def run_pipeline(user_shopping_list, threshold = 0.50):
                 "similarity_score": round(best_score, 4)
             }
         )
-        """for 1st version: keep clea_match_products [] unique, will update the quantity in version 2"""
+        """for 1st version: keep clean_match_products [] unique, will update the quantity in version 2"""
         if best_match is not None and best_match not in clean_matched_products: # remove None and duplicates
             clean_matched_products.append(best_match)
 
@@ -30,20 +30,25 @@ def run_pipeline(user_shopping_list, threshold = 0.50):
         return {
             "matched_details": matched_details,
             "store_comparison": None,
-            "best_store": None,
+            "cheapest_store": None,
+            "nearest_store": None,
             "message": "No reliable product matches were found."
         }
-    matched_offers, comparison_result_df, best_store, message = recommend_cheapest_store(clean_matched_products)
+    matched_offers, basket_summary,cheapest_store, nearest_store, message = recommend_store(clean_matched_products,
+                                                                                original_request_count, user_latitude, user_longitude)
     return {
         "matched_details": matched_details,
-        "store_comparison": comparison_result_df,
-        "best_store": best_store,
+        "store_comparison": basket_summary,
+        "cheapest_store": cheapest_store,
+        "nearest_store": nearest_store,
         "message": message
     }
 
 if __name__ == "__main__":
     user_shopping_list = ["whole milk", "10 eggs", "spaghetti","fish", "chicken drum stick"]
-    result = run_pipeline(user_shopping_list, threshold = 0.5)
+    user_latitude = 52.5200
+    user_longitude = 13.4050
+    result = run_pipeline(user_shopping_list, user_latitude, user_longitude, threshold = 0.5)
 
     print("Matched result:")
     for row in result ["matched_details"]:
@@ -53,7 +58,7 @@ if __name__ == "__main__":
         print("\nStore comparison:")
         print(
             result["store_comparison"][
-                ["store_id", "name", "basket_total", "matched_items", "requested_items", "is_complete"]
+                ["store_id", "store name", "basket_total", "matched_items", "requested_items", "is_complete"]
             ]
         )
     print("\nRecommendation message:")

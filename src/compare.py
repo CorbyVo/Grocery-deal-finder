@@ -1,13 +1,11 @@
-from rapidfuzz.distance.DamerauLevenshtein_py import normalized_distance
-
-from load_data import load_offers
+from src.load_data import load_offers, load_stores
 import pandas as pd
 
-def compare_basket(normalized_shopping_list, offers_df):
+def compare_basket(normalized_shopping_list, num_of_original_shopping_items, offers_df, stores_df,):
     """
     Compare basket total across stores for a given shopping list and check basket completeness.
     Parameters:
-        shopping_list (list[str]): list of normalized product names
+        normalized_shopping_list (list[str]): list of normalized product names
         offers_df (pd.DataFrame): dataframe containing offers)
     Return:
         match_offers (pd.DataFrame)
@@ -20,30 +18,30 @@ def compare_basket(normalized_shopping_list, offers_df):
 
     # => we get a smaller table containing only the products the user wants
     normalized_shopping_set = set(normalized_shopping_list) # set() is designed for jast membership checks
-    basket_summary = pd.DataFrame()
     matched_offers = offers_df[offers_df["normalized_name"].isin(normalized_shopping_set)].copy()
 
     basket_summary = (
-        matched_offers.groupby("store_id") # group the filter DataFrame by store_id
-        .agg( basket_total = ("price", "sum"), # look for the "price" column, add all prices together, store the result in new column named "basket_total"
-              matched_items = ("normalized_name", "nunique")) # look at "normalized_name" column, count how many unique product name exist, store the result in the new column named matched_items
-        .reset_index() # when using sum((). mean(), count(), etc after groupby(), the groupby() column become the index of the aggregated result
-                       # therefore, we need to reset_index(), to build another index column, and return groupby() to be the normal column
+        matched_offers.groupby("store_id")
+        .agg( basket_total = ("price", "sum"), matched_items = ("normalized_name", "nunique"))
+        .reset_index()
     )
 
-    basket_summary["requested_items"] = len(normalized_shopping_set)
+    basket_summary["requested_items"] = num_of_original_shopping_items
     basket_summary["is_complete"] = (basket_summary["matched_items"] == basket_summary["requested_items"])
+    basket_summary = basket_summary.merge(stores_df, on="store_id", how="left")
 
     return matched_offers, basket_summary
 
-if __name__ == "__main__": # run the code below only if this file is executed directly
+if __name__ == "__main__":
     offers_df = load_offers()
+    stores_df = load_stores()
 
     normalized_shopping_list = ["milk", "eggs", "pasta", "apples"]
-    matched_offers, summary = compare_basket(normalized_shopping_list, offers_df)
+    num_item = 4
+    matched_offers, summary = compare_basket(normalized_shopping_list, num_item, offers_df, stores_df)
 
     print(" Normalized shopping list:", normalized_shopping_list)
     print("\nMatched offers:")
     print(matched_offers)
     print("\nBasket summary:")
-    print(summary)
+    print(summary.T)
