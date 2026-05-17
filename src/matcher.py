@@ -33,7 +33,8 @@ if __name__ == "__main__":
         "spaghetti",
         "10 eggs",
         "green apple",
-        "salmon"
+        "salmon",
+        "10 eggs"
     ]
 
     for item in test_inputs:
