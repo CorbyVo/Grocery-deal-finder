@@ -45,6 +45,13 @@ This project is currently a working prototype.
 - Quantity-aware basket compasison is not fully implemented yet
 - Recommandation logic is still being refined
 
+### Next Steps
+- Improve test coverage for edge cases
+- Add quantity-aware basket comparison
+- Expand store and product data
+- Improve UI presentation and recommendation messaging
+- Explore semi-automated or automated data ingestion
+  
 ## Roadmap
 See `roadmap.md`
 
