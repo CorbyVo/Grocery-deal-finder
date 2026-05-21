@@ -30,7 +30,7 @@ Build a simple app that:
 - geopy
 
 ## Project Status
-Implemented the logic for basket price calculation and the store price comparison and cheapest store recommendation
+This project is currently a working prototype.
 
 ## Roadmap
 See `roadmap.md`
