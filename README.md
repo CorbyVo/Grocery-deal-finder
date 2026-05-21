@@ -32,6 +32,19 @@ Build a simple app that:
 ## Project Status
 This project is currently a working prototype.
 
+### Example Workflow
+1. User enters a shopping list
+2. The NLP matcher maps each input to a normalized product
+3. The app compares available offers across stores
+4. The app checks whether each store covers the requested basket
+5. The app shows the cheapest store, nearest store, and missing-item information
+
+### Known Limitation
+- Uses sample/manual data instead of a live supermarket data pipeline
+- Covers only a small set of products and stores
+- Quantity-aware basket compasison is not fully implemented yet
+- Recommandation logic is still being refined
+
 ## Roadmap
 See `roadmap.md`
 
