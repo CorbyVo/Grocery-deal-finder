@@ -2,14 +2,14 @@ import pandas as pd
 from src.compare import compare_basket
 
 def test_many_to_one_normalization_still_counts_as_complete():
-    valid_matched_details = [
+    matched_details = [
         {"user_input": "egg", "matched_product": "eggs", "similarity_score": 0.91},
         {"user_input": "pasta", "matched_product": "pasta", "similarity_score": 0.95},
         {"user_input": "spaghetti", "matched_product": "pasta", "similarity_score": 0.89},
     ]
 
-    original_request_count = 3
-    unmatched_user_input = []
+    num_of_original_shopping_items = 3
+    unmatched_user_inputs = []
 
     offers_df = pd.DataFrame(
         [
@@ -29,9 +29,9 @@ def test_many_to_one_normalization_still_counts_as_complete():
         ]
     )
 
-    matched_offers, basket_summary = compare_basket(valid_matched_details = valid_matched_details,
-                                                    original_request_count = original_request_count,
-                                                    unmatched_user_input = unmatched_user_input,
+    matched_offers, basket_summary = compare_basket(matched_details = matched_details,
+                                                    num_of_original_shopping_items = num_of_original_shopping_items,
+                                                    unmatched_user_inputs = unmatched_user_inputs,
                                                     offers_df = offers_df,
                                                     stores_df = stores_df,)
 
@@ -39,5 +39,5 @@ def test_many_to_one_normalization_still_counts_as_complete():
 
     assert row["matched_items"] == 3
     assert row["requested_items"] == 3
-    assert row["is_complete"] is True
-    assert row["unmatched_items"] == 0
+    assert row["is_complete"] == True
+    assert row["unmatched_items"] == []
