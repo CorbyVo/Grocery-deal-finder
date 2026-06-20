@@ -135,12 +135,12 @@ Use this file to track your work every week.
 - [x] Write recommend.py
 - [x] Return cheapest store
 - [x] Return nearest store
-- [ ] Return best overall store
-- [ ] Add simple explanation rules
+- [X] Return best overall store
+- [X] Add simple explanation rules
 
 ### Deliverables
 - [x] Recommendation output is understandable
-- [ ] One test case with clear explanation created
+- [X] One test case with clear explanation created
 
 ### Notes
 - Problems faced: not able to give the recommendation if the cheapest store and nearest store are different
@@ -175,20 +175,15 @@ Use this file to track your work every week.
 **Goal:** make the project more reliable.
 
 ### Tasks
-- [ ] Add tests folder
-- [ ] Write test for matcher
-- [ ] Write test for basket comparison
+- [X] Add tests folder
+- [X] Write test for matcher
+- [X] Write test for basket comparison
 - [ ] Fix bugs found during testing
 - [ ] Check edge cases such as missing product offers
 
 ### Deliverables
-- [ ] At least 2-4 basic tests added
+- [X] At least 2-4 basic tests added
 - [ ] Main demo path works without crashes
-
-### Notes
-- Problems faced:
-- Decisions made:
-- Next focus:
 
 ---
 
@@ -259,10 +254,10 @@ Use this file to track your work every week.
 - [x] GitHub repo created and organized
 - [x] Sample grocery data prepared
 - [x] Basket comparison logic works
-- [ ] Product matching works for simple inputs
-- [ ] Distance calculation works
-- [ ] Recommendation engine works
-- [ ] Streamlit demo runs locally
+- [X] Product matching works for simple inputs
+- [X] Distance calculation works
+- [X] Recommendation engine works
+- [X] Streamlit demo runs locally
 - [ ] README is polished
 - [ ] Screenshots added
 - [ ] Project is ready to show on CV
