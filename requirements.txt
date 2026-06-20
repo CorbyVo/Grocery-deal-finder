@@ -3,3 +3,4 @@ pandas
 geopy
 rapidfuzz
 sentence-transformers
+pytest
