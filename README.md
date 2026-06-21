@@ -60,10 +60,10 @@ See `weekly_checklist.md`
 
 ## Screenshots
 ### Homepage
-![Homepage](assets/screenshots/Homepage_2.png) ![Grocery Comparison](assets/screenshots/Homepage_1.png)
+![Homepage](assets/screenshots/Homepage_2.png)  
 
 ### Grocery Comparison
-![Grocery Comparison](assets/screenshots/comparison_1.png) ![Grocery Comparison](assets/screenshots/comparison_2.png)
+![Grocery Comparison](assets/screenshots/comparison_1.png) 
 
 ### Project Q&A Assistant
 ![Project Q&A Assistant](assets/screenshots/project_qa.png)
