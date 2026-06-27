@@ -3,3 +3,29 @@ product_id,normalized_name,category,unit
 2,eggs,dairy,10pcs
 3,pasta,dry_food,500g
 4,apples,fruit,1kg
+5,bananas,fruit,1kg
+6,tomatoes,vegetable,1kg
+7,potatoes,vegetable,2kg
+8,onions,vegetable,1kg
+9,carrots,vegetable,1kg
+10,bread,bakery,1 loaf
+11,rice,dry_food,1kg
+12,cheese,dairy,200g
+13,butter,dairy,250g
+14,yogurt,dairy,500g
+15,chicken,meat,1kg
+16,salmon,fish,250g
+17,mineral water,drinks,1.5L
+18,orange juice,drinks,1L
+19,coffee,drinks,500g
+20,sugar,baking,1kg
+21,flour,baking,1kg
+22,olive oil,pantry,500ml
+23,cereal,breakfast,500g
+24,biscuits,snacks,200g
+25,soap,household,1pc
+26,toilet paper,household,8 rolls
+27,paper towels,household,2 rolls
+28,detergent,household,1L
+29,apple juice,drinks,1L
+30,pasta sauce,pantry,400g

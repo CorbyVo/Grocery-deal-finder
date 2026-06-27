@@ -4,7 +4,6 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import re
 
 from src.project_rag import ProjectRetriever
-from src.project_qa import answer_project_question
 from src.pipeline import run_pipeline
 import pandas as pd
 import streamlit as st
@@ -90,8 +89,16 @@ if st.button("Compare"):
     result = run_pipeline(user_shopping_list, user_latitude, user_longitude, threshold=0.50)
 
     st.subheader("1. Matched Products")
-    matched_df = pd.DataFrame(result["matched_details"]) # pd.DataFrame(dictionary or list data)
-    st.dataframe(matched_df, use_container_width=True)
+    matched_df = pd.DataFrame(result["matched_details"])
+
+    user_view_df = matched_df[["user_input", "matched_product"]].copy()
+    st.dataframe(user_view_df, use_container_width=True)
+
+    with st.expander("Show AI matching details"):
+        ai_view_df = matched_df[
+            ["user_input", "matched_product", "similarity_score", "confidence", "method"]
+        ].copy()
+        st.dataframe(ai_view_df, use_container_width=True)
 
     st.subheader("2. Unrecognized Products")
     if result["unmatched_user_inputs"]:
@@ -114,6 +121,29 @@ if st.button("Compare"):
             "unmatched_items",
         ]
         store_comparison = result["store_comparison"][display_column].copy()
+
+        store_comparison["unmatched_items"] = store_comparison["unmatched_items"].apply(
+            lambda x: ", ".join(x) if isinstance(x, list) and len(x) > 0 else "None"
+        )
+
+        store_comparison["basket_total"] = store_comparison["basket_total"].apply(
+            lambda x: f"€{x:.2f}"
+        )
+
+        store_comparison["distance_km"] = store_comparison["distance_km"].round(2)
+
+        store_comparison = store_comparison.rename(
+            columns={
+                "store_id": "Store ID",
+                "store_name": "Store",
+                "basket_total": "Basket Total",
+                "distance_km": "Distance (km)",
+                "requested_items": "Requested Items",
+                "matched_items": "Matched Items",
+                "unmatched_items": "Unmatched Items",
+            }
+        )
+
         st.dataframe(store_comparison, use_container_width=True)
 
         st.subheader("Recommendations")

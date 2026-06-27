@@ -1,0 +1,43 @@
+user_input,expected_match
+milk,milk
+whole milk,milk
+fresh milk,milk
+skimmed milk,milk
+full cream milk,milk
+1l milk,milk
+egg,eggs
+10 eggs,eggs
+spaghetti,pasta
+macaroni,pasta
+penne,pasta
+tagliatelle,pasta
+apple,apples
+green apple,apples
+banana,bananas
+tomato,tomatoes
+potato,potatoes
+onion,onions
+carrot,carrots
+bread,bread
+rice,rice
+cheese,cheese
+butter,butter
+yogurt,yogurt
+chicken drum stick,chicken
+salmon,salmon
+mineral water,mineral water
+orange juice,orange juice
+coffee,coffee
+sugar,sugar
+flour,flour
+olive oil,olive oil
+cereal,cereal
+biscuits,biscuits
+soap,soap
+toilet paper,toilet paper
+paper towel,paper towels
+detergent,detergent
+apple juice,apple juice
+pasta sauce,pasta sauce
+random alien snack,
+mystery galaxy food,
