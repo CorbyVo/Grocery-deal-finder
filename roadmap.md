@@ -1,144 +1,265 @@
-# Student Grocery Deal Finder - Project Roadmap
+# Grocery Deal Finder — Roadmap
 
-## 1. Project summary
-A beginner-friendly AI-assisted prototype that helps students in Germany compare supermarket offers and find the best nearby store based on basket price and distance.
+## 1. Project Summary
+
+Grocery Deal Finder is an AI-assisted grocery comparison prototype for students in Germany.
+
+The app allows users to enter a shopping list, matches the input to known grocery products, compares available store offers, and shows both the cheapest store and the nearest store.
+
+The project is designed as a practical portfolio project that demonstrates Python, data processing, NLP matching, API development, and frontend-backend separation.
+
+---
 
 ## 2. Problem
-Students often need to check multiple supermarket flyers and apps to find the best grocery discounts. This is time-consuming and makes it harder to save money.
+
+Students and budget-conscious shoppers often need to check several supermarket flyers, apps, or websites to find the best grocery deals.
+
+This is time-consuming because product names are not always written the same way, prices are spread across different sources, and users also need to consider the distance to the store.
+
+---
 
 ## 3. Goal
-Build a working prototype that:
-- accepts a shopping list from the user
-- compares selected supermarket offers
-- considers store distance from the user
-- recommends the best store
-- explains the recommendation clearly
 
-## 4. Target users
-- students in Germany
-- budget-conscious shoppers
-- people who do not want to manually compare flyers
+The goal is to build a working prototype that can:
 
-## 5. MVP scope
-To keep the project realistic and finishable, the first version will include:
-- 1 city in Germany
-- 2 supermarkets only
-- 20-30 common grocery products
-- manually curated weekly offer data
-- shopping-list comparison
-- distance-aware recommendation
-- simple AI/NLP product matching
+* accept a user shopping list
+* normalize product names using matching logic
+* compare grocery offers across stores
+* calculate store distance from the user
+* show the cheapest store
+* show the nearest store
+* explain the recommendation clearly
+* expose the core logic through a FastAPI backend
 
-## 6. Key features by phase
+---
 
-### Phase 1 - Proof of concept
-- Create project repo and folder structure
-- Create sample CSV files for stores, products, and offers
-- Build basket price comparison logic
+## 4. Target Users
 
-### Phase 2 - Useful prototype
-- Add distance calculation
-- Add recommendation logic
-- Build a simple Streamlit interface
+* students in Germany
+* budget-conscious shoppers
+* people who want to compare supermarket offers faster
+* users who want a simple grocery recommendation based on price and distance
 
-### Phase 3 - AI enhancement
-- Semantic product matching using a pretrained Sentence Transformer (SBERT-style) model
-- Normalize user input to known products
-- Add natural-language recommendation explanation
+---
 
-### Phase 4 - Portfolio polish
-- Improve README and documentation
-- Add screenshots and demo examples
-- Add tests for matching and comparison logic
+## 5. Current Features
 
-### Phase 5 - Future expansion
-- Add more supermarkets
-- Semi-automate data collection
-- Introduce database storage
-- Expose functionality through an API
+The current version includes:
 
-## 7. Technical architecture
+* Streamlit frontend
+* FastAPI backend
+* shopping-list input
+* hybrid product matching
+* alias-based matching rules
+* semantic similarity matching using Sentence Transformers
+* store comparison based on basket price
+* distance calculation based on user location
+* separate cheapest-store and nearest-store recommendations
+* optional AI matching details in the UI
+* Project Q&A Assistant using retrieval over project documents
+* matcher evaluation script with a custom evaluation dataset
+* basic tests for matcher, comparison, and pipeline logic
 
-### Frontend
-- Streamlit
+---
 
-### Core logic
-- Python
-- pandas
-- sentence-transformer
-- geopy
+## 6. Current Architecture
 
-### Storage
-- CSV initially
-- SQLite later
-
-### Possible later additions
-- FastAPI
-- embeddings or LLM-based matching
-- automated ingestion pipeline
-
-## 8. Main engineering challenge
-The hardest part of the project is not the recommendation logic. It is obtaining and maintaining reliable supermarket offer data.
-
-## 9. Data strategy
-
-### Stage 1
-Manual sample data entered into CSV files.
-
-### Stage 2
-Semi-automated extraction from public flyer/web sources.
-
-### Stage 3
-Normalization pipeline for product names, units, and categories.
-
-### Stage 4
-Potential future combination with crowdsourced or partner data.
-
-## 10. Success criteria for MVP
-The MVP is successful if a user can:
-- enter a small shopping list
-- see matched products
-- compare basket prices across two stores
-- see which store is cheapest
-- see which store is nearer
-- receive a clear recommendation
-
-## 11. Repository structure
 ```text
-student-grocery-deal-finder/
-|- data/
-|  |- stores.csv
-|  |- products.csv
-|  `- offers.csv
-|- src/
-|  |- load_data.py
-|  |- matcher.py
-|  |- compare.py
-|  |- recommend.py
-|  `- utils.py
-|- app/
-|  `- streamlit_app.py
-|- tests/
-|- notebooks/
-|- README.md
-|- requirements.txt
-`- roadmap.md
+User
+ |
+ v
+Streamlit Frontend
+ |
+ | sends shopping list + location
+ v
+FastAPI Backend
+ |
+ v
+Pipeline Logic
+ |
+ |-- Product Matcher
+ |-- Store Comparison
+ |-- Distance Calculation
+ |-- Recommendation Logic
+ |
+ v
+JSON Result
+ |
+ v
+Streamlit Display
 ```
 
-## 12. What recruiters should see
-This project should demonstrate:
-- problem-solving ability
-- clean project structure
-- practical use of Python and data processing
-- understanding of AI as a focused tool rather than a buzzword
-- product thinking and clear documentation
+The Streamlit app is used as the frontend.
 
-## 13. Future work ideas
-- add public transport or walking route suggestions
-- improve product matching with embeddings
-- add basket optimization across multiple stores
-- track historical offer trends
-- support more cities and more chains
+The FastAPI backend exposes the project logic through API endpoints.
 
-## 14. One-sentence CV version
-Built an AI-assisted grocery price comparison prototype for students in Germany that ranks nearby supermarkets based on basket price and distance using Python, data processing, and product-matching logic.
+The core recommendation logic remains reusable inside the `src/` folder.
+
+---
+
+## 7. Main API Endpoints
+
+```text
+GET  /
+GET  /stores
+POST /stores/nearby
+POST /stores/nearest
+POST /compare
+```
+
+The main endpoint is:
+
+```text
+POST /compare
+```
+
+This endpoint receives:
+
+* shopping list
+* user latitude
+* user longitude
+* matching threshold
+
+It returns:
+
+* matched products
+* unmatched user inputs
+* store comparison
+* cheapest-store and nearest-store recommendation message
+
+---
+
+## 8. Development Phases
+
+### Phase 1 — Proof of Concept
+
+Completed:
+
+* created project repository
+* created basic folder structure
+* created sample CSV data
+* built basket comparison logic
+* built initial recommendation logic
+
+### Phase 2 — Streamlit Prototype
+
+Completed:
+
+* built Streamlit interface
+* added shopping-list input
+* displayed matched products
+* displayed store comparison
+* displayed recommendation message
+
+### Phase 3 — NLP Product Matching
+
+Completed:
+
+* added semantic product matching
+* added alias and synonym matching
+* moved matching rules into CSV
+* added confidence and method labels
+* added matcher evaluation script
+* created custom matcher evaluation dataset
+
+### Phase 4 — Recommendation Improvements
+
+Completed:
+
+* added distance calculation
+* separated cheapest store and nearest store
+* avoided artificial combined scoring
+* improved handling of unmatched products
+* improved display formatting in Streamlit
+
+### Phase 5 — Project Q&A Assistant
+
+Completed:
+
+* added retrieval-based project assistant
+* used README, roadmap, FAQ, checklist, and source files as retrieval sources
+* added chat-style interface
+* added retrieved source display
+
+### Phase 6 — FastAPI Backend
+
+Completed:
+
+* created FastAPI backend
+* added store-location endpoints
+* added nearby-store endpoint
+* added nearest-store endpoint
+* added `/compare` endpoint
+* connected Streamlit frontend to FastAPI backend
+
+---
+
+## 9. Main Engineering Challenge
+
+The biggest challenge is not the recommendation formula.
+
+The hardest part is obtaining and maintaining reliable grocery offer data, because supermarket prices, product names, units, and discounts change frequently.
+
+For this reason, the current version uses manually curated sample data.
+
+---
+
+## 10. Current Limitations
+
+* Store and offer data is manually created sample data.
+* The app does not yet use live supermarket data.
+* The number of products and stores is still limited.
+* Quantity-aware basket comparison is not fully implemented yet.
+* OCR-based shopping-list input is not implemented yet.
+* Product-package image recognition is not implemented.
+* The Project Q&A Assistant is retrieval-based, not a full LLM answer generator.
+* Real walking or public transport route calculation is not implemented yet.
+
+---
+
+## 11. Next Steps
+
+### Short-Term Improvements
+
+* update README with FastAPI setup instructions
+* add screenshots of the Streamlit app and FastAPI docs
+* improve API error handling
+* improve empty-result handling in Streamlit
+* expand Rosenheim store data
+* expand grocery offer data
+
+### Medium-Term Improvements
+
+* add quantity handling
+* improve matcher evaluation dataset
+* add more realistic grocery input examples
+* add browser-based location input
+* add SQLite database instead of CSV-only storage
+* add better API response models
+
+### Long-Term Ideas
+
+* semi-automated flyer or offer extraction
+* OCR input for shopping-list photos
+* basket optimization across multiple stores
+* historical price tracking
+* support more cities
+* support more supermarket chains
+* route-aware recommendation using walking or public transport distance
+
+---
+
+## 12. What This Project Demonstrates
+
+This project demonstrates:
+
+* practical Python development
+* clean project structure
+* data processing with pandas
+* NLP-based product matching
+* API development with FastAPI
+* frontend-backend separation
+* Streamlit app development
+* testing and evaluation mindset
+* product thinking
+* clear documentation

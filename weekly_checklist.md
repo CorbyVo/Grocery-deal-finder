@@ -129,23 +129,32 @@ Use this file to track your work every week.
 ---
 
 ## Week 6 - Recommendation engine
-**Goal:** combine price and distance into a useful recommendation.
+
+Goal: provide useful store recommendations based on price and distance.
 
 ### Tasks
-- [x] Write recommend.py
+
+- [x] Write `recommend.py`
 - [x] Return cheapest store
 - [x] Return nearest store
-- [X] Return best overall store
-- [X] Add simple explanation rules
+- [x] Add simple explanation rules
+- [x] Explain tradeoff when cheapest and nearest stores are different
 
 ### Deliverables
-- [x] Recommendation output is understandable
-- [X] One test case with clear explanation created
+
+- [x] Cheapest store is shown correctly
+- [x] Nearest store is shown correctly
+- [x] Recommendation message is understandable
+- [x] User can compare price and distance separately
 
 ### Notes
-- Problems faced: not able to give the recommendation if the cheapest store and nearest store are different
-- Decisions made: just export the the cheapest store and nearest store information. Give the user freedom to make decision
-- Next focus: use more rules and logic to give the user the best recommendation
+
+Problems faced: It was difficult to create one fair "best overall store" because price and distance use different scales and the final choice depends on the user's personal preference.
+
+Decisions made: Do not force one combined score. Show cheapest store and nearest store separately, then explain the tradeoff clearly.
+
+Next focus: Improve recommendation explanation and maybe add optional user preference later, such as "prefer cheapest" or "prefer nearest".
+
 
 ---
 
@@ -191,15 +200,15 @@ Use this file to track your work every week.
 **Goal:** make the repo clear for recruiters.
 
 ### Tasks
-- [ ] Improve README structure
-- [ ] Add architecture overview
-- [ ] Add sample input and output examples
-- [ ] Add screenshots of app
-- [ ] Add future work section
+- [X] Improve README structure
+- [X] Add architecture overview
+- [X] Add sample input and output examples
+- [X] Add screenshots of app
+- [X] Add future work section
 
 ### Deliverables
-- [ ] README is professional and readable
-- [ ] Repo can be understood without asking you questions
+- [X] README is professional and readable
+- [X] Repo can be understood without asking you questions
 
 ### Notes
 - Problems faced:
@@ -212,11 +221,11 @@ Use this file to track your work every week.
 **Goal:** make the project look stronger on GitHub and CV.
 
 ### Tasks
-- [ ] Clean file names and code organization
-- [ ] Improve comments in important files
-- [ ] Review commit history quality
-- [ ] Add one notebook or diagram if useful
-- [ ] Draft CV bullet points from project
+- [X] Clean file names and code organization
+- [X] Improve comments in important files
+- [X] Review commit history quality
+- [X] Add one notebook or diagram if useful
+- [X] Draft CV bullet points from project
 
 ### Deliverables
 - [ ] Repo looks tidy and intentional
@@ -233,14 +242,14 @@ Use this file to track your work every week.
 **Goal:** finish MVP and define next version.
 
 ### Tasks
-- [ ] Review all features against MVP scope
+- [X] Review all features against MVP scope
 - [ ] Fix final bugs
-- [ ] Mark completed roadmap items
+- [X] Mark completed roadmap items
 - [ ] Write lessons learned section
 - [ ] Plan version 2 improvements
 
 ### Deliverables
-- [ ] MVP completed
+- [X] MVP completed
 - [ ] Next version priorities written down
 
 ### Notes
@@ -258,6 +267,38 @@ Use this file to track your work every week.
 - [X] Distance calculation works
 - [X] Recommendation engine works
 - [X] Streamlit demo runs locally
-- [ ] README is polished
-- [ ] Screenshots added
-- [ ] Project is ready to show on CV
+- [X] README is polished
+- [X] Screenshots added
+- [X] Project is ready to show on CV
+
+## Week 12 - FastAPI Backend
+
+Goal: separate the frontend from the backend and expose the project logic through API endpoints.
+
+### Tasks
+
+- [x] Create `api/main.py`
+- [x] Add FastAPI app
+- [x] Add `/stores` endpoint
+- [x] Add `/stores/nearby` endpoint
+- [x] Add `/stores/nearest` endpoint
+- [x] Add `/compare` endpoint
+- [x] Connect Streamlit frontend to FastAPI using `requests`
+- [x] Convert pandas DataFrame results into JSON-safe response
+
+### Deliverables
+
+- [x] FastAPI backend runs locally
+- [x] API documentation is available at `/docs`
+- [x] Streamlit sends shopping list and user location to FastAPI
+- [x] FastAPI runs the recommendation pipeline
+- [x] Streamlit displays the API response
+
+### Notes
+
+- Problems faced: Streamlit originally called the Python pipeline directly, so the app did not clearly show frontend-backend separation.
+
+- Decisions made: Keep Streamlit as the frontend and use FastAPI as the backend. The existing matcher, comparison, and recommendation logic stays reusable inside the backend.
+
+- Next focus: Update README, requirements.txt, roadmap, and project structure to show the new FastAPI architecture.
+

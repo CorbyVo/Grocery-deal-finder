@@ -1,18 +1,12 @@
-from geopy.distance import geodesic
 from src.load_data import load_stores, load_offers
 from src.compare import compare_basket
 import pandas as pd
+from src.distance import calculate_distance_km
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
 pd.set_option('display.width', None)
 
-
-def calculate_distance_km(user_latitude, user_longitude, store_latitude, store_longitude):
-    """
-        Calculate distance in kilometers between user and store coordinates.
-    """
-    return geodesic((user_latitude, user_longitude ), (store_latitude, store_longitude)).km
 
 
 def find_nearest_store( candidate_stores):

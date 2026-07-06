@@ -4,3 +4,8 @@ geopy
 rapidfuzz
 sentence-transformers
 pytest
+fastapi
+uvicorn
+pydantic
+requests
+torch

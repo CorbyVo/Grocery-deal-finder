@@ -1,3 +1,4 @@
 store_id,store_name,address,city,postcode,store_latitude,store_longitude
-1,REWE,Example Street 1,YourCity,00000,0.5,2.2
-2,Lidl,Example Street 2,YourCity,00000,1.0,3.5
+1,REWE,Example Street 1,Rosenheim,00000,47.8560,12.1220
+2,Lidl,Example Street 2,Rosenheim,00000,47.8520,12.1280
+3,ALDI,Example Street 3,Rosenheim,00000,47.8490,12.1190
