@@ -9,7 +9,6 @@ def load_project_documents():
     file_paths = [
         PROJECT_ROOT / "README.md",
         PROJECT_ROOT / "roadmap.md",
-        PROJECT_ROOT / "weekly_checklist.md",
         PROJECT_ROOT / "project_faq.md",
         PROJECT_ROOT / "src" / "matcher.py",
         PROJECT_ROOT / "src" / "pipeline.py",

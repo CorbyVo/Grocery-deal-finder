@@ -38,7 +38,7 @@ The MVP focuses on a small but complete grocery comparison workflow:
 - numpy
 - pytorch/tensorflow
 - Streamlit
-- sentence-transformer
+- sentence-transformer / NLP
 - geopy
 - Requests
 - pytest
@@ -69,7 +69,7 @@ POST /compare
 
 ---
 
-## Project structure
+## Current Project structure
 ```text
 Grocery-deal-finder/
 │
