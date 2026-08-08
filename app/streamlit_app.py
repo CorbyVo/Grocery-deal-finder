@@ -29,9 +29,63 @@ st.set_page_config(page_title="Grocery Deal Finder", layout="wide")
 
 st.title("Grocery Deal Finder")
 st.write("Compare supermarket offers and get the best store recommendation.")
-user_input = st.text_area(
-    "Enter your shopping list (one item per line):", value="egg\npasta\nspaghetti"
+if "shopping_list_text" not in st.session_state:
+    st.session_state.shopping_list_text = "egg\npasta\nspaghetti"
+
+st.subheader("Upload shopping-list photo")
+
+uploaded_file = st.file_uploader(
+    "Upload an image of your shopping list",
+    type=["png", "jpg", "jpeg"]
 )
+
+if uploaded_file is not None:
+    if st.button("Extract shopping list from image"):
+        files = {
+            "file": (
+                uploaded_file.name,
+                uploaded_file.getvalue(),
+                uploaded_file.type
+            )
+        }
+
+        try:
+            response = requests.post(
+                "http://127.0.0.1:8000/ocr/shopping-list",
+                files=files
+            )
+
+            response.raise_for_status()
+            ocr_result = response.json()
+
+            extracted_items_list = (
+                ocr_result.get("cleaned_items")
+                or ocr_result.get("items")
+                or ocr_result.get("raw_items")
+                or []
+            )
+
+            extracted_items = "\n".join(extracted_items_list)
+
+            st.session_state.shopping_list_text = extracted_items
+
+            st.success("Shopping list extracted from image.")
+            st.rerun()
+
+        except requests.exceptions.ConnectionError:
+            st.error("FastAPI backend is not running.")
+
+        except requests.exceptions.RequestException as e:
+            st.error(f"OCR request failed: {e}")
+
+user_input = st.text_area(
+    "Enter your shopping list (one item per line):",
+    value=st.session_state.shopping_list_text,
+    height=150
+)
+
+st.session_state.shopping_list_text = user_input
+
 
 st.subheader("Your location")
 user_latitude = st.number_input("Latitude", value=52.5200, format="%.6f")

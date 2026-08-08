@@ -3,7 +3,7 @@ import sys
 from typing import List, Any
 
 import pandas as pd
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, UploadFile, File
 from pydantic import BaseModel, Field
 
 # Allow importing from src/
@@ -12,7 +12,8 @@ sys.path.append(str(PROJECT_ROOT))
 
 from src.distance import calculate_distance_km
 from src.pipeline import run_pipeline
-
+from src.ocr_reader import extract_text_from_image, parse_shopping_items
+from src.llm_cleaner import clean_items_with_llm
 
 app = FastAPI(
     title="Grocery Deal Finder API",
@@ -114,3 +115,25 @@ def compare_grocery_deals(request: CompareRequest):
         threshold=request.threshold
     )
     return make_json_safe(result)
+
+
+@app.post("/ocr/shopping-list")
+async def ocr_shopping_list(file: UploadFile = File(...)):
+    if not file.content_type.startswith("image/"):
+        raise HTTPException(
+            status_code=400,
+            detail="Please upload an image file."
+        )
+
+    image_bytes = await file.read()
+
+    raw_text = extract_text_from_image(image_bytes)
+    raw_items = parse_shopping_items(raw_text)
+    cleaned_items = clean_items_with_llm(raw_text, raw_items)
+
+    return {
+        "filename": file.filename,
+        "raw_text": raw_text,
+        "raw_items": raw_items,
+        "cleaned_items": cleaned_items
+    }
