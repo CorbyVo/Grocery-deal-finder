@@ -43,6 +43,9 @@ The MVP focuses on a small but complete grocery comparison workflow:
 - Requests
 - pytest
 - scikit-learn
+- OCR with Tesseract / pytesseract
+- Local LLM with Ollama
+- REST API
 
 ---
 
@@ -65,7 +68,32 @@ GET  /stores
 POST /stores/nearby
 POST /stores/nearest
 POST /compare
+POST /ocr/shopping-list
 ```
+
+---
+
+
+## OCR and LLM Shopping-List Scanner
+
+The project now includes an AI-powered shopping-list scanner.
+
+Users can upload an image of a shopping list. The backend then:
+
+1. receives the image through a FastAPI file-upload endpoint
+2. extracts text from the image using OCR
+3. cleans noisy OCR output using a local LLM through Ollama
+4. sends the cleaned shopping list into the existing product-matching pipeline
+5. compares stores by basket price and distance
+
+This feature demonstrates how computer vision, LLMs, API development, and recommendation logic can work together in one practical application.
+
+Main OCR endpoint:
+
+```text
+POST /ocr/shopping-list
+```
+
 
 ---
 
@@ -93,9 +121,12 @@ Grocery-deal-finder/
 │   ├── compare.py                # Basket comparison logic
 │   ├── recommend.py              # Cheapest / nearest recommendation logic
 │   ├── distance.py               # Distance calculation logic
+│   ├── ocr_reader.py             # OCR text extraction from shopping-list images
+│   ├── llm_cleaner.py            # Local LLM cleaner for noisy OCR text
 │   ├── load_data.py              # CSV data loading helpers
 │   ├── evaluate_matcher.py       # Matcher evaluation script
 │   └── project_rag.py            # Project Q&A retrieval assistant
+
 │
 ├── tests/
 │   ├── test_compare.py           # Tests for comparison logic
@@ -145,7 +176,19 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 4. Start the FastAPI backend
+### 4. Start Ollama for LLM cleaning
+
+The LLM cleaner uses a local Ollama model.
+
+Install and run the model:
+
+```bash
+ollama pull llama3.2
+ollama run llama3.2
+````
+
+
+### 5. Start the FastAPI backend
 
 ```bash
 uvicorn api.main:app --reload
@@ -157,7 +200,7 @@ After starting the backend, open the FastAPI documentation:
 http://127.0.0.1:8000/docs
 ```
 
-### 5. Start the Streamlit frontend
+### 6. Start the Streamlit frontend
 
 Open a second terminal and run:
 
@@ -178,6 +221,8 @@ This project is currently a working prototype. Current features:
 - Streamlit frontend connected to the FastAPI backend
 - Project Q&A Assistant using retrieval over project documents
 - matcher evaluation script with a custom evaluation dataset
+- OCR-based shopping-list image upload
+- LLM-based cleanup for noisy OCR output using Ollama
 
 ---
 
@@ -201,17 +246,24 @@ This project is currently a working prototype. Current features:
 - Matcher evaluation is based on a custom test set and should be expanded.
 - The Project Q&A Assistant is retrieval-based and does not yet generate full LLM answers.
 - Live supermarket API or flyer scraping is not implemented yet.
-- OCR-based shopping-list input is planned but not implemented yet.
+- OCR-based shopping-list input is implemented as a prototype and works best with clear printed shopping lists.
+- Handwritten shopping lists may produce OCR errors.
+- The LLM cleaner improves noisy OCR output but should still be validated by the user.
+- Ollama must be running locally for the LLM cleaning feature.
 
 ---
 
 ## Next Steps
+
 Planned improvements include:
-* Expand real store and offer data for Rosenheim
-* Add browser-based user location input
-* Improve quantity-aware basket comparison
-* Add OCR input for shopping-list photos
-* Improve API error handling and tests
+
+- Improve OCR preprocessing for better image quality
+- Add better support for handwritten shopping lists
+- Add browser-based user location input
+- Expand real store and offer data for Rosenheim
+- Improve quantity-aware basket comparison
+- Add API tests for FastAPI endpoints
+- Improve error handling when OCR or Ollama is unavailable
 
 For a more detailed development plan, see `roadmap.md`.
 
