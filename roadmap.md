@@ -58,8 +58,11 @@ The current version includes:
 * optional AI matching details in the UI
 * Project Q&A Assistant using retrieval over project documents
 * matcher evaluation script with a custom evaluation dataset
-* basic tests for matcher, comparison, and pipeline logic
-
+* OCR-based shopping-list image upload
+* LLM-based cleanup for noisy OCR output using Ollama
+* FastAPI file-upload endpoint for shopping-list images
+* Streamlit image upload connected to the backend
+* pytest tests for API, matcher, comparison, pipeline logic, OCR parser, and LLM cleaner
 ---
 
 ## 6. Current Architecture
@@ -105,6 +108,7 @@ GET  /stores
 POST /stores/nearby
 POST /stores/nearest
 POST /compare
+POST /ocr/shopping-list
 ```
 
 The main endpoint is:
@@ -192,6 +196,17 @@ Completed:
 * added `/compare` endpoint
 * connected Streamlit frontend to FastAPI backend
 
+### Phase 7 — OCR and LLM Shopping-List Scanner
+
+Completed:
+
+* added image upload in the Streamlit frontend
+* added FastAPI file-upload endpoint
+* added OCR text extraction using Tesseract / pytesseract
+* added LLM-based cleanup using Ollama
+* connected extracted shopping-list items to the existing comparison workflow
+* added tests for OCR text parsing and LLM cleaning logic
+
 ---
 
 ## 9. Main Engineering Challenge
@@ -210,10 +225,13 @@ For this reason, the current version uses manually curated sample data.
 * The app does not yet use live supermarket data.
 * The number of products and stores is still limited.
 * Quantity-aware basket comparison is not fully implemented yet.
-* OCR-based shopping-list input is not implemented yet.
 * Product-package image recognition is not implemented.
 * The Project Q&A Assistant is retrieval-based, not a full LLM answer generator.
 * Real walking or public transport route calculation is not implemented yet.
+* OCR-based shopping-list input works best with clear printed text.
+* Handwritten shopping lists may still produce OCR errors.
+* The LLM cleaner improves noisy OCR output, but users should still review the extracted items.
+* Ollama must run locally for the LLM cleaning feature.
 
 ---
 
@@ -221,7 +239,6 @@ For this reason, the current version uses manually curated sample data.
 
 ### Short-Term Improvements
 
-* update README with FastAPI setup instructions
 * add screenshots of the Streamlit app and FastAPI docs
 * improve API error handling
 * improve empty-result handling in Streamlit
@@ -240,13 +257,16 @@ For this reason, the current version uses manually curated sample data.
 ### Long-Term Ideas
 
 * semi-automated flyer or offer extraction
-* OCR input for shopping-list photos
 * basket optimization across multiple stores
 * historical price tracking
 * support more cities
 * support more supermarket chains
 * route-aware recommendation using walking or public transport distance
-
+* improve OCR preprocessing for better image quality
+* add real image-based OCR tests
+* add API tests for the OCR upload endpoint
+* improve fallback handling when Ollama is not running
+* evaluate OCR accuracy on printed shopping-list examples
 ---
 
 ## 12. What This Project Demonstrates
@@ -257,9 +277,12 @@ This project demonstrates:
 * clean project structure
 * data processing with pandas
 * NLP-based product matching
+* OCR-based computer vision input
+* local LLM integration with Ollama
 * API development with FastAPI
 * frontend-backend separation
 * Streamlit app development
+* REST API communication
 * testing and evaluation mindset
 * product thinking
 * clear documentation

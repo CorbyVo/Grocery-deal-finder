@@ -113,7 +113,7 @@ Use this file to track your work every week.
 ### Tasks
 - [x] Add user location input format
 - [x] Store latitude and longitude in stores.csv
-- [x] Use geopy or simple coordinates for distance calculation
+- [x] Use Haversine distance calculation with store coordinates
 - [x] Compute store distance from user
 - [x] Show nearest store result
 
@@ -270,6 +270,13 @@ Next focus: Improve recommendation explanation and maybe add optional user prefe
 - [X] README is polished
 - [X] Screenshots added
 - [X] Project is ready to show on CV
+- [X] FastAPI backend works
+- [X] Streamlit frontend is connected to FastAPI
+- [X] OCR shopping-list image upload works
+- [X] LLM cleaner works with Ollama
+- [X] API tests added
+- [X] OCR / LLM tests added
+- [X] Pytest suite passes
 
 ## Week 12 - FastAPI Backend
 
@@ -300,5 +307,61 @@ Goal: separate the frontend from the backend and expose the project logic throug
 
 - Decisions made: Keep Streamlit as the frontend and use FastAPI as the backend. The existing matcher, comparison, and recommendation logic stays reusable inside the backend.
 
-- Next focus: Update README, requirements.txt, roadmap, and project structure to show the new FastAPI architecture.
+- Next focus: Add OCR and LLM shopping-list input through the FastAPI backend.
 
+## Week 13 - OCR and LLM Shopping-List Scanner
+
+Goal: allow users to upload a shopping-list image and convert it into clean grocery items.
+
+### Tasks
+
+- [x] Create `src/ocr_reader.py`
+- [x] Add OCR text extraction using Tesseract / pytesseract
+- [x] Add image upload in Streamlit
+- [x] Add FastAPI endpoint `POST /ocr/shopping-list`
+- [x] Create `src/llm_cleaner.py`
+- [x] Use Ollama to clean noisy OCR output
+- [x] Send cleaned items into the existing shopping-list workflow
+
+### Deliverables
+
+- [x] User can upload a printed shopping-list image
+- [x] OCR extracts raw text from the image
+- [x] LLM cleaner converts noisy text into clean grocery items
+- [x] Extracted items appear in the Streamlit text area
+- [x] User can click Compare after extraction
+
+### Notes
+
+- Problems faced: OCR works better with clear printed text than handwriting. Streamlit session state caused an error when updating the text area after image extraction.
+- Decisions made: Start with printed shopping-list images first. Use the LLM only as a cleanup step, not as the main recommendation logic.
+- Next focus: Add tests for OCR, LLM cleaner, and API endpoints.
+
+## Week 14 - Testing AI and API Features
+
+Goal: make the OCR, LLM, and FastAPI features more reliable.
+
+### Tasks
+
+- [x] Add `test_ocr_reader.py`
+- [x] Add `test_llm_cleaner.py`
+- [x] Add API tests in `test_api.py`
+- [x] Test OCR text parsing
+- [x] Test LLM cleaner with mocked Ollama response
+- [x] Test fallback behavior when Ollama is unavailable
+- [x] Test FastAPI store and comparison endpoints
+- [x] Run full pytest test suite
+
+### Deliverables
+
+- [x] OCR parser test added
+- [x] LLM cleaner test added
+- [x] FastAPI endpoint tests added
+- [x] Current test suite passes successfully
+- [x] Test result: 13 tests passed
+
+### Notes
+
+- Problems faced: Real OCR image testing is less stable because it depends on Tesseract installation and image quality.
+- Decisions made: Start with reliable unit and API tests first. Add real image OCR tests later.
+- Next focus: Update README, roadmap, and GitHub documentation.

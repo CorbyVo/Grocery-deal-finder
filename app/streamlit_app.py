@@ -57,6 +57,16 @@ if uploaded_file is not None:
 
             response.raise_for_status()
             ocr_result = response.json()
+            
+            with st.expander("Show OCR and LLM details"):
+                st.write("Raw OCR text:")
+                st.text(ocr_result.get("raw_text", ""))
+
+                st.write("Raw OCR items:")
+                st.write(ocr_result.get("raw_items", []))
+
+                st.write("LLM-cleaned items:")
+                st.write(ocr_result.get("cleaned_items", []))
 
             extracted_items_list = (
                 ocr_result.get("cleaned_items")

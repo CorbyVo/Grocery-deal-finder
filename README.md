@@ -31,7 +31,7 @@ The MVP focuses on a small but complete grocery comparison workflow:
 
 ---
 
-## Planned Tech Stack
+## Tech Stack
 - Python
 - FastAPI
 - pandas
@@ -44,7 +44,7 @@ The MVP focuses on a small but complete grocery comparison workflow:
 - pytest
 - scikit-learn
 - OCR with Tesseract / pytesseract
-- Local LLM with Ollama
+- Ollama for local LLM cleanup
 - REST API
 
 ---
@@ -126,9 +126,14 @@ Grocery-deal-finder/
 │   ├── load_data.py              # CSV data loading helpers
 │   ├── evaluate_matcher.py       # Matcher evaluation script
 │   └── project_rag.py            # Project Q&A retrieval assistant
-
+│
 │
 ├── tests/
+│   ├── test_api.py               # test for general API endpoints
+│   ├── test_ocr_reader.py        # test for OCR text parser / unit test
+│   ├── test_ocr_image.py         # real image -> OCR test
+│   ├── test_llm_cleaner.py       # test for LLM cleaning logic
+│   ├── test_api_ocr.py           # OCR upload endpoint only
 │   ├── test_compare.py           # Tests for comparison logic
 │   ├── test_matcher.py           # Tests for product matcher
 │   └── test_pipeline.py          # Tests for main pipeline
@@ -185,7 +190,7 @@ Install and run the model:
 ```bash
 ollama pull llama3.2
 ollama run llama3.2
-````
+```
 
 
 ### 5. Start the FastAPI backend
@@ -223,6 +228,7 @@ This project is currently a working prototype. Current features:
 - matcher evaluation script with a custom evaluation dataset
 - OCR-based shopping-list image upload
 - LLM-based cleanup for noisy OCR output using Ollama
+- pytest suite currently passes: 13 tests passed
 
 ---
 
@@ -239,7 +245,7 @@ This project is currently a working prototype. Current features:
 
 ---
 
-## Known Limitation
+## Known Limitations
 - Store and offer data is currently sample/manual data, not live supermarket data.
 - The app currently focuses on a limited set of stores and grocery products.
 - Quantity-aware basket comparison is not fully implemented yet.
@@ -262,7 +268,7 @@ Planned improvements include:
 - Add browser-based user location input
 - Expand real store and offer data for Rosenheim
 - Improve quantity-aware basket comparison
-- Add API tests for FastAPI endpoints
+- Expand API tests for OCR upload and full end-to-end workflows
 - Improve error handling when OCR or Ollama is unavailable
 
 For a more detailed development plan, see `roadmap.md`.

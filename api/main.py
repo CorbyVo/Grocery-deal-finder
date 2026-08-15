@@ -25,15 +25,15 @@ DATA_PATH = PROJECT_ROOT / "data" / "stores.csv"
 
 
 class UserLocation(BaseModel):
-    lat: float = Field(..., example=47.8560)
-    lon: float = Field(..., example=12.1220)
+    lat: float = Field(..., json_schema_extra= {"example" : 47.8560})
+    lon: float = Field(..., json_schema_extra= {"example": 12.1220})
 
 
 class CompareRequest(BaseModel):
-    shopping_list: List[str] = Field(..., example=["egg", "pasta", "spaghetti"])
-    latitude: float = Field(..., example=47.8560)
-    longitude: float = Field(..., example=12.1220)
-    threshold: float = Field(default=0.50, example=0.50)
+    shopping_list: List[str] = Field(..., json_schema_extra= {"example":["egg", "pasta", "spaghetti"]})
+    latitude: float = Field(..., json_schema_extra={ "example":47.8560})
+    longitude: float = Field(...,json_schema_extra={"example":12.1220})
+    threshold: float = Field(json_schema_extra={"default":0.50, "example":0.50})
 
 
 def load_stores():
