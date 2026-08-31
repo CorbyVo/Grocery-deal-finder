@@ -4,6 +4,7 @@ from typing import List, Any
 
 import pandas as pd
 from fastapi import FastAPI, HTTPException, UploadFile, File
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 # Allow importing from src/
@@ -21,6 +22,14 @@ app = FastAPI(
     version="1.0.0",
 )
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173","http://127.0.0.1:5173",],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 DATA_PATH = PROJECT_ROOT / "data" / "stores.csv"
 
 
@@ -33,7 +42,7 @@ class CompareRequest(BaseModel):
     shopping_list: List[str] = Field(..., json_schema_extra= {"example":["egg", "pasta", "spaghetti"]})
     latitude: float = Field(..., json_schema_extra={ "example":47.8560})
     longitude: float = Field(...,json_schema_extra={"example":12.1220})
-    threshold: float = Field(json_schema_extra={"default":0.50, "example":0.50})
+    threshold: float = Field(default=0.50,json_schema_extra={"example": 0.50})
 
 
 def load_stores():
