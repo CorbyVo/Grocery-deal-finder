@@ -1,11 +1,27 @@
-streamlit
-pandas
-geopy
-rapidfuzz
-sentence-transformers
-pytest
+# Backend / API
 fastapi
 uvicorn
 pydantic
-requests
+python-multipart
+
+# Data / ML / NLP
+pandas
+numpy
+scikit-learn
+sentence-transformers
 torch
+rapidfuzz
+
+# Frontend prototype
+streamlit
+
+# HTTP requests
+requests
+
+# OCR
+pillow
+pytesseract
+
+# Testing
+pytest
+httpx

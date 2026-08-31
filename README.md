@@ -32,20 +32,23 @@ The MVP focuses on a small but complete grocery comparison workflow:
 ---
 
 ## Tech Stack
+### Backend / AI
 - Python
 - FastAPI
 - pandas
 - numpy
-- pytorch/tensorflow
-- Streamlit
-- sentence-transformer / NLP
-- geopy
-- Requests
-- pytest
 - scikit-learn
-- OCR with Tesseract / pytesseract
+- Sentence Transformers / NLP
+- Tesseract OCR / pytesseract
 - Ollama for local LLM cleanup
+- pytest
 - REST API
+
+### Frontend
+- React
+- TypeScript
+- Vite
+- Streamlit for quick prototyping
 
 ---
 
@@ -69,6 +72,7 @@ POST /stores/nearby
 POST /stores/nearest
 POST /compare
 POST /ocr/shopping-list
+POST /project-chat
 ```
 
 ---
@@ -105,7 +109,7 @@ Grocery-deal-finder/
 │   └── main.py                  # FastAPI backend endpoints
 │
 ├── app/
-│   └── streamlit_app.py          # Streamlit frontend
+│   └── streamlit_app.py          # Streamlit prototype frontend
 │
 ├── data/
 │   ├── products.csv              # Normalized product catalog
@@ -113,6 +117,14 @@ Grocery-deal-finder/
 │   ├── stores.csv                # Store information and coordinates
 │   ├── offers.csv                # Sample supermarket offers
 │   └── matcher_eval.csv          # Evaluation data for product matching
+│
+├── frontend/
+│   ├── src/
+│   │   ├── App.tsx              # React TypeScript main UI
+│   │   ├── api.ts               # Frontend API calls to FastAPI
+│   │   └── App.css              # Frontend styling
+│   ├── package.json             # Frontend dependencies and scripts
+│   └── vite.config.ts           # Vite configuration
 │
 ├── src/
 │   ├── pipeline.py               # Main grocery comparison pipeline
@@ -147,6 +159,44 @@ Grocery-deal-finder/
 ```
 
 ---
+## External System Requirements
+
+Some tools must be installed separately because they are not Python packages.
+
+### Tesseract OCR
+
+Tesseract OCR is required for image-to-text extraction.
+
+The Python package `pytesseract` is only a wrapper. It does not install the real Tesseract OCR engine.
+
+Tesseract does not need to be started manually. It only needs to be installed and reachable by Python.
+
+On Windows, the Tesseract executable path may need to be configured in:
+
+```text
+src/ocr_reader.py
+```
+
+Example:
+
+```python
+import pytesseract
+pytesseract.pytesseract.tesseract_cmd = r"D:\Programs\Tesseract-OCR\tesseract.exe"
+```
+
+### Ollama
+
+Ollama is required only for the optional LLM cleanup step after OCR. 
+
+Ollama must be running only when using the OCR + LLM shopping-list scanner.
+
+The model can be downloaded once with:
+
+```bash
+ollama pull llama3.2
+ollama run llama3.2
+```
+---
 
 ## How to Run
 
@@ -177,8 +227,39 @@ source .venv/bin/activate
 
 ### 3. Install dependencies
 
+#### Backend dependencies
+
+Python backend dependencies are listed in:
+
+```text
+requirements.txt
+```
+
+Install them with:
+
 ```bash
 pip install -r requirements.txt
+```
+
+#### Frontend dependencies
+
+React + TypeScript frontend dependencies are listed in:
+
+```text
+frontend/package.json
+```
+
+Install them with:
+
+```bash
+cd frontend
+npm install
+```
+
+Then return to the project root if needed:
+
+```bash
+cd ..
 ```
 
 ### 4. Start Ollama for LLM cleaning
@@ -205,9 +286,35 @@ After starting the backend, open the FastAPI documentation:
 http://127.0.0.1:8000/docs
 ```
 
-### 6. Start the Streamlit frontend
+### 6. Start the Frontends
 
-Open a second terminal and run:
+This project currently provides two frontend options.
+
+#### Option A: React + TypeScript frontend
+
+This is the main application frontend.
+
+Open a second terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Frontend URL:
+
+```text
+http://localhost:5173
+```
+
+The React frontend demonstrates a more realistic full-stack application structure with a TypeScript UI connected to the FastAPI backend.
+
+#### Option B: Streamlit prototype frontend
+
+This frontend is kept for quick testing, prototyping, and comparing results during development.
+
+Open another terminal from the project root:
 
 ```bash
 streamlit run app/streamlit_app.py
@@ -223,17 +330,19 @@ This project is currently a working prototype. Current features:
 - store comparison based on basket price and distance
 - separate cheapest-store and nearest-store recommendations
 - FastAPI backend for API-based comparison
-- Streamlit frontend connected to the FastAPI backend
+- Streamlit prototype frontend connected to the FastAPI backend
 - Project Q&A Assistant using retrieval over project documents
 - matcher evaluation script with a custom evaluation dataset
 - OCR-based shopping-list image upload
 - LLM-based cleanup for noisy OCR output using Ollama
 - pytest suite currently passes: 13 tests passed
-
+- React + TypeScript frontend connected to the FastAPI backend
+- Project Q&A Assistant available through the `/project-chat` API endpoint
+- React chatbot UI for asking questions about the project
 ---
 
 ## Example Workflow
-1. The user enters a shopping list in the Streamlit frontend.
+1. The user enters a shopping list in the React TypeScript frontend.
 2. The frontend sends the shopping list and user location to the FastAPI backend.
 3. The FastAPI backend runs the grocery comparison pipeline.
 4. The NLP matcher maps each raw user input to a normalized product name.
@@ -241,8 +350,7 @@ This project is currently a working prototype. Current features:
 6. The app checks whether each store can cover the requested basket.
 7. The app calculates the distance between the user and each store.
 8. The app returns the cheapest store, nearest store, basket price, distance, and missing-item information.
-9. The Streamlit frontend displays the matched products, store comparison, and final recommendation.
-
+9. The React frontend displays the matched products, store comparison, and final recommendation.
 ---
 
 ## Known Limitations
