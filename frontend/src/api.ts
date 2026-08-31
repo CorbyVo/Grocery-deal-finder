@@ -42,10 +42,30 @@ export async function compareDeals(
     },
     body: JSON.stringify(payload),
   });
-
   if (!response.ok) {
     throw new Error("Failed to compare grocery deals.");
   }
+  return response.json();
+}
 
+export type ProjectChatResponse = {
+  answer: string;
+  sources: {
+    source: string;
+    score: number;
+  }[];
+};
+
+export async function askProject(question: string): Promise<ProjectChatResponse> {
+  const response = await fetch(`${API_BASE_URL}/project-chat`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ question }),
+  });
+  if (!response.ok) {
+    throw new Error("Failed to ask project assistant.");
+  }
   return response.json();
 }
