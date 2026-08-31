@@ -1,0 +1,149 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #0f172a;
+  color: #e5e7eb;
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.hero {
+  padding: 32px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #1e293b, #111827);
+  border: 1px solid #334155;
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  margin: 0 0 12px;
+  font-size: 42px;
+}
+
+.hero p {
+  margin: 0;
+  color: #cbd5e1;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.card {
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+textarea,
+input {
+  width: 100%;
+  background: #1e293b;
+  color: #e5e7eb;
+  border: 1px solid #475569;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 15px;
+  margin-top: 6px;
+}
+
+label {
+  display: block;
+  margin-bottom: 14px;
+  color: #cbd5e1;
+}
+
+button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+.error {
+  color: #f87171;
+}
+
+.success-box {
+  background: #064e3b;
+  border: 1px solid #10b981;
+  padding: 16px;
+  border-radius: 12px;
+  color: #d1fae5;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+th,
+td {
+  border-bottom: 1px solid #334155;
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  color: #93c5fd;
+}
+
+.chat-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chat-message {
+  padding: 12px;
+  border-radius: 12px;
+  background: #1e293b;
+}
+
+.chat-message.user {
+  border-left: 4px solid #2563eb;
+}
+
+.chat-message.assistant {
+  border-left: 4px solid #10b981;
+}
+
+.chat-input-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.chat-input-row input {
+  flex: 1;
+}
+
+@media (max-width: 800px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
