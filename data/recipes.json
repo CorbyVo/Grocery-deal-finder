@@ -1,0 +1,55 @@
+[
+  {
+    "id": "tomato-pasta",
+    "title": "Tomato Pasta",
+    "servings": 2,
+    "preparation_minutes": 5,
+    "cooking_minutes": 15,
+    "ingredients": [
+      {"product_id": 3, "name": "pasta", "quantity": 200, "unit": "g"},
+      {"product_id": 30, "name": "pasta sauce", "quantity": 250, "unit": "g"},
+      {"product_id": 12, "name": "cheese", "quantity": 40, "unit": "g"}
+    ],
+    "steps": [
+      "Cook the pasta according to the package instructions.",
+      "Warm the pasta sauce and mix it with the drained pasta.",
+      "Top with cheese and serve."
+    ],
+    "tags": ["vegetarian", "quick"]
+  },
+  {
+    "id": "banana-yogurt-bowl",
+    "title": "Banana Yogurt Bowl",
+    "servings": 1,
+    "preparation_minutes": 5,
+    "cooking_minutes": 0,
+    "ingredients": [
+      {"product_id": 14, "name": "yogurt", "quantity": 200, "unit": "g"},
+      {"product_id": 5, "name": "bananas", "quantity": 1, "unit": "piece"},
+      {"product_id": 23, "name": "cereal", "quantity": 50, "unit": "g"}
+    ],
+    "steps": [
+      "Slice the banana.",
+      "Add the yogurt to a bowl and top with banana and cereal."
+    ],
+    "tags": ["vegetarian", "breakfast", "quick"]
+  },
+  {
+    "id": "cheese-omelette",
+    "title": "Cheese Omelette",
+    "servings": 1,
+    "preparation_minutes": 5,
+    "cooking_minutes": 8,
+    "ingredients": [
+      {"product_id": 2, "name": "eggs", "quantity": 2, "unit": "piece"},
+      {"product_id": 12, "name": "cheese", "quantity": 40, "unit": "g"},
+      {"product_id": 13, "name": "butter", "quantity": 10, "unit": "g"}
+    ],
+    "steps": [
+      "Beat the eggs.",
+      "Melt the butter in a pan and add the eggs.",
+      "Add the cheese, fold the omelette, and cook until the eggs are set."
+    ],
+    "tags": ["vegetarian", "quick"]
+  }
+]
