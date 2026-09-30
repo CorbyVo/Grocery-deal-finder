@@ -1,0 +1,7 @@
+query,expected_recipe_id
+I want pasta with tomato sauce,tomato-pasta
+A quick vegetarian pasta dish,tomato-pasta
+I want breakfast with yogurt and fruit,banana-yogurt-bowl
+Something with banana yogurt and cereal,banana-yogurt-bowl
+I want an omelette with cheese,cheese-omelette
+A quick egg dish cooked in butter,cheese-omelette
